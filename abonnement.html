@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return verif()">
+        <fieldset>
+            <legend>Ajout d'un abonnement</legend>
+            <label for="cin">CIN:</label><input type="text" id="cin"><br>
+            <label for="nom">Nom:</label><input type="text" id="nom"><br>
+            <label for="pre">Prenom:</label><input type="text" id="pre"><br>
+            <label for="add">Adress:</label><textarea id="add"></textarea> <br>
+            <label for="email">Email:</label><input type="email" id="email"><br>
+            <label for="rev">Revue:</label><select name="cars" id="cars"><option>choisir un titre</option><option value="12.250">Java pour débutant</option>
+            <option value="1.250">Mots fléchés</option><option value="8.540">Sciences et vie</option><option value="5.200">Le meilleur du foot</option></select><br>
+            <label>Durée(mois):</label><input type="radio" name="ra">3<input type="radio" name="ra">6 <input type="radio" name="ra">12<br>
+            <button type="reset" id="b1">Annuler</button><button id="b2">Calculer</button><button id="b3" type="submit">vérifier</button>
+        </fieldset>
+    </form>
+    <p>Nous somme le:</p><span id="p1"></span>
+    <p>Montaut a payer =</p><span id="p2"></span>
+    <p>Date déchéance:</p><span id="p3"></span>
+</body>
+</html>
+<script>
+    function verif(){
+        cin=document.getElementById("cin").value
+        modele=/^[0-1][0-9]{7}$/
+        if(modele.test(cin)==false){
+            alert("CIN est invalide")
+            document.getElementById("cin").focus()
+            return false
+        }
+        nom=document.getElementById("nom").value
+        pre=document.getElementById("pre").value
+        mod=/^[a-z]+$/
+        if(mod.test(nom)==false){
+            alert("nom est invalide")
+            document.getAnimations("nom").focus()
+            return false        
+        }
+        if(mod.test(pre)==false){
+            alert("prenom invaldie")
+            document.getElementById("pre").focus()
+            return false
+        }
+        rv=document.getElementById("rev").selectedIdex
+        if(rv==0){
+            alert("Revue est invalide")
+        }
+
+
+    }
+</script>
