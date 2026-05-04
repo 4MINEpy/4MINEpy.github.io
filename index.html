@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mohamed Amin Medfai | Portfolio</title>
+		<meta
+			name="description"
+			content="Portfolio of Mohamed Amin Medfai, Full-Stack Developer and AI Engineer."
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+		/>
+		<style>
+			:root {
+				--bg: #0b1020;
+				--bg-2: #0f1830;
+				--text: #e6edf7;
+				--muted: #9fb0c7;
+				--accent: #2de2e6;
+				--accent-weak: rgba(45, 226, 230, 0.18);
+				--card: rgba(17, 27, 52, 0.7);
+				--border: rgba(45, 226, 230, 0.22);
+				--shadow: 0 18px 40px rgba(5, 9, 20, 0.45);
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				margin: 0;
+				font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+				color: var(--text);
+				background: radial-gradient(
+						900px 420px at 12% -10%,
+						rgba(45, 226, 230, 0.16),
+						transparent 60%
+					),
+					radial-gradient(
+						700px 520px at 88% -20%,
+						rgba(45, 226, 230, 0.1),
+						transparent 60%
+					),
+					var(--bg);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				max-width: 100%;
+				display: block;
+			}
+
+			.container {
+				width: min(1100px, 92vw);
+				margin: 0 auto;
+			}
+
+			.nav {
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				backdrop-filter: blur(10px);
+				background: rgba(7, 12, 26, 0.72);
+				border-bottom: 1px solid rgba(45, 226, 230, 0.08);
+			}
+
+			.nav-inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 16px 0;
+			}
+
+			.logo {
+				font-weight: 700;
+				letter-spacing: 2px;
+				color: var(--accent);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 20px;
+				font-size: 14px;
+				color: var(--muted);
+			}
+
+			.nav-links a {
+				transition: color 0.3s ease;
+			}
+
+			.nav-links a:hover {
+				color: var(--accent);
+			}
+
+			.section {
+				padding: 72px 0;
+			}
+
+			.section-title {
+				font-size: clamp(24px, 2vw, 32px);
+				margin: 0 0 18px;
+			}
+
+			.section-subtitle {
+				color: var(--muted);
+				margin-bottom: 32px;
+				max-width: 680px;
+			}
+
+			.hero {
+				padding: 88px 0 48px;
+			}
+
+			.hero-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+				gap: 48px;
+				align-items: center;
+			}
+
+			.hero-media {
+				display: flex;
+				justify-content: center;
+			}
+
+			.hero h1 {
+				font-size: clamp(36px, 4vw, 56px);
+				margin: 0 0 8px;
+			}
+
+			.hero h2 {
+				font-size: clamp(18px, 2vw, 24px);
+				color: var(--accent);
+				margin: 0 0 18px;
+				font-weight: 500;
+			}
+
+			.hero p {
+				color: var(--muted);
+				font-size: 16px;
+				max-width: 520px;
+				margin-bottom: 28px;
+			}
+
+			.cta-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px 20px;
+				border-radius: 999px;
+				font-weight: 600;
+				border: 1px solid transparent;
+				transition: transform 0.25s ease, box-shadow 0.25s ease,
+					border-color 0.25s ease;
+			}
+
+			.btn-primary {
+				background: var(--accent);
+				color: #06121a;
+				box-shadow: 0 12px 28px rgba(45, 226, 230, 0.22);
+			}
+
+			.btn-outline {
+				border-color: var(--border);
+				color: var(--text);
+				background: transparent;
+			}
+
+			.btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 14px 34px rgba(45, 226, 230, 0.2);
+			}
+
+			.media {
+				position: relative;
+				border-radius: 24px;
+				background: linear-gradient(160deg, var(--bg-2), #0b1222);
+				border: 1px solid rgba(45, 226, 230, 0.28);
+				box-shadow: var(--shadow);
+				overflow: hidden;
+				min-height: 220px;
+			}
+
+			.media::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background-image: var(--bg-image);
+				background-size: cover;
+				background-position: center;
+				opacity: 0.95;
+				transition: opacity 0.4s ease;
+			}
+
+			.media.has-image::after {
+				opacity: 1;
+			}
+
+			.media span {
+				position: absolute;
+				inset: auto 16px 16px 16px;
+				font-family: "JetBrains Mono", monospace;
+				font-size: 12px;
+				color: var(--muted);
+				z-index: 1;
+				opacity: 0.85;
+			}
+
+			.media.has-image span {
+				opacity: 0;
+			}
+
+			.profile {
+				aspect-ratio: 1 / 1;
+				width: min(260px, 70vw);
+				min-height: 180px;
+				margin: 0 auto;
+			}
+
+			.about-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 32px;
+				align-items: center;
+			}
+
+			.about-card {
+				padding: 24px;
+				border-radius: 18px;
+				background: var(--card);
+				border: 1px solid rgba(45, 226, 230, 0.16);
+			}
+
+			.skill-groups {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 20px;
+			}
+
+			.skill-group {
+				background: var(--card);
+				border-radius: 16px;
+				padding: 20px;
+				border: 1px solid rgba(45, 226, 230, 0.12);
+			}
+
+			.skill-group h4 {
+				margin: 0 0 14px;
+				font-size: 16px;
+			}
+
+			.badge-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.badge {
+				padding: 6px 12px;
+				border-radius: 999px;
+				background: rgba(45, 226, 230, 0.12);
+				color: var(--text);
+				font-size: 12px;
+				border: 1px solid rgba(45, 226, 230, 0.18);
+			}
+
+			.timeline {
+				position: relative;
+				border-left: 1px solid rgba(45, 226, 230, 0.24);
+				padding-left: 26px;
+			}
+
+			.timeline-item {
+				position: relative;
+				padding-bottom: 28px;
+			}
+
+			.timeline-item::before {
+				content: "";
+				position: absolute;
+				left: -33px;
+				top: 4px;
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				background: var(--accent);
+				box-shadow: 0 0 0 6px rgba(45, 226, 230, 0.18);
+			}
+
+			.timeline-header {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px 14px;
+				align-items: baseline;
+			}
+
+			.timeline-header h4 {
+				margin: 0;
+				font-size: 18px;
+			}
+
+			.timeline-header span {
+				color: var(--muted);
+				font-size: 14px;
+			}
+
+			.timeline ul {
+				margin: 12px 0 0 18px;
+				color: var(--muted);
+			}
+
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 20px;
+			}
+
+			.project-card {
+				background: var(--card);
+				border-radius: 18px;
+				border: 1px solid rgba(45, 226, 230, 0.15);
+				padding: 18px;
+				transition: transform 0.3s ease, border-color 0.3s ease;
+			}
+
+			.project-card:hover {
+				transform: translateY(-6px);
+				border-color: rgba(45, 226, 230, 0.4);
+			}
+
+			.project-media {
+				aspect-ratio: 16 / 9;
+				margin-bottom: 14px;
+			}
+
+			.featured-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 28px;
+				align-items: start;
+				margin-bottom: 44px;
+			}
+
+			.featured-gallery {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+
+			.featured-image {
+				margin: 0;
+				border-radius: 18px;
+				overflow: hidden;
+				border: 1px solid rgba(45, 226, 230, 0.18);
+				background: #0b1222;
+				box-shadow: var(--shadow);
+			}
+
+			.featured-image img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+
+			.featured-details {
+				background: var(--card);
+				border-radius: 18px;
+				border: 1px solid rgba(45, 226, 230, 0.18);
+				padding: 24px;
+			}
+
+			.project-card h4 {
+				margin: 0 0 8px;
+				font-size: 18px;
+			}
+
+			.project-card p {
+				color: var(--muted);
+				margin: 0 0 12px;
+			}
+
+			.cert-card {
+				background: var(--card);
+				border-radius: 16px;
+				padding: 20px;
+				border: 1px solid rgba(45, 226, 230, 0.16);
+				max-width: 520px;
+			}
+
+			.contact-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 16px;
+			}
+
+			.contact-card {
+				padding: 18px;
+				border-radius: 14px;
+				border: 1px solid rgba(45, 226, 230, 0.16);
+				background: rgba(10, 18, 34, 0.7);
+				transition: border-color 0.3s ease;
+			}
+
+			.contact-card:hover {
+				border-color: rgba(45, 226, 230, 0.4);
+			}
+
+			.contact-card span {
+				color: var(--muted);
+				font-size: 12px;
+				display: block;
+				margin-bottom: 8px;
+			}
+
+			.reveal {
+				opacity: 0;
+				transform: translateY(24px);
+				transition: opacity 0.8s ease, transform 0.8s ease;
+			}
+
+			.reveal.in-view {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			@media (max-width: 720px) {
+				.nav-links {
+					gap: 12px;
+					flex-wrap: wrap;
+					justify-content: flex-end;
+					font-size: 12px;
+				}
+
+				.hero {
+					padding-top: 70px;
+				}
+
+				.section {
+					padding: 60px 0;
+				}
+
+				.featured-gallery {
+					gap: 16px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="nav">
+			<div class="container nav-inner">
+				<a class="logo" href="#hero">MAM</a>
+				<nav class="nav-links">
+					<a href="#about">About</a>
+					<a href="#skills">Skills</a>
+					<a href="#experience">Experience</a>
+					<a href="#projects">Projects</a>
+					<a href="#certifications">Certifications</a>
+					<a href="#contact">Contact</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<section class="hero" id="hero">
+				<div class="container hero-grid">
+					<div class="hero-text reveal">
+						<h1>Mohamed Amin Medfai</h1>
+						<h2>Full-Stack Developer &amp; AI Engineer</h2>
+						<p>
+							Building RAG platforms and full-stack products with Java,
+							Spring Boot, Angular, and AI tooling.
+						</p>
+						<div class="cta-row">
+							<a class="btn btn-primary" href="#projects">View Projects</a>
+							<a class="btn btn-outline" href="#contact">Contact Me</a>
+						</div>
+					</div>
+					<div class="hero-media reveal">
+						<div class="media profile" data-src="images/profile.jpg">
+							<span>images/profile.jpg</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="about">
+				<div class="container about-grid">
+					<div class="reveal">
+						<h3 class="section-title">About</h3>
+						<p class="section-subtitle">
+							I am a full-stack developer in Tunisia, pursuing a Bachelor's
+							Degree in Information Systems Development at ISET Rades
+							(2023-2026). My stack covers Java, JavaScript, TypeScript, PHP,
+							Python, Kotlin, and SQL with Spring Boot, Angular, React, Laravel,
+							Symfony, and LangChain4j. I am currently building an intelligent
+							platform for automated technical writing at Tunisys using Apache
+							Tika for ingestion, pgvector with HNSW indexing for semantic
+							search, and LLM generation via the Groq API.
+						</p>
+					</div>
+					<div class="about-card reveal">
+						<h4>Current Focus</h4>
+						<p>
+							Backend in Spring Boot with LangChain4j and a collaborative
+							Angular frontend with WebSockets (STOMP), section locking, and
+							granular versioning for the RAG platform.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="skills">
+				<div class="container">
+					<h3 class="section-title reveal">Skills</h3>
+					<p class="section-subtitle reveal">
+						A focused toolkit for building end-to-end systems, from product
+						interfaces to AI-powered backends.
+					</p>
+					<div class="skill-groups">
+						<div class="skill-group reveal">
+							<h4>Languages</h4>
+							<div class="badge-row">
+								<span class="badge">Java</span>
+								<span class="badge">JavaScript</span>
+								<span class="badge">TypeScript</span>
+								<span class="badge">PHP</span>
+								<span class="badge">Python</span>
+								<span class="badge">Kotlin</span>
+								<span class="badge">HTML/CSS</span>
+								<span class="badge">SQL</span>
+							</div>
+						</div>
+						<div class="skill-group reveal">
+							<h4>Frameworks</h4>
+							<div class="badge-row">
+								<span class="badge">Spring Boot</span>
+								<span class="badge">Angular</span>
+								<span class="badge">React</span>
+								<span class="badge">Laravel</span>
+								<span class="badge">Symfony</span>
+								<span class="badge">LangChain4j</span>
+							</div>
+						</div>
+						<div class="skill-group reveal">
+							<h4>Databases</h4>
+							<div class="badge-row">
+								<span class="badge">PostgreSQL (pgvector)</span>
+								<span class="badge">MySQL</span>
+								<span class="badge">MongoDB</span>
+							</div>
+						</div>
+						<div class="skill-group reveal">
+							<h4>AI / RAG</h4>
+							<div class="badge-row">
+								<span class="badge">RAG pipelines</span>
+								<span class="badge">Vector embeddings</span>
+								<span class="badge">Groq API</span>
+								<span class="badge">Apache Tika</span>
+							</div>
+						</div>
+						<div class="skill-group reveal">
+							<h4>Tools</h4>
+							<div class="badge-row">
+								<span class="badge">Git</span>
+								<span class="badge">Linux</span>
+								<span class="badge">REST APIs</span>
+								<span class="badge">WebSockets (STOMP)</span>
+								<span class="badge">Android Studio</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="experience">
+				<div class="container">
+					<h3 class="section-title reveal">Experience</h3>
+					<p class="section-subtitle reveal">
+						Internship experience across AI platforms, web applications, and IT
+						support.
+					</p>
+					<div class="timeline">
+						<div class="timeline-item reveal">
+							<div class="timeline-header">
+								<h4>Software Engineering Intern — PFE</h4>
+								<span>Feb 2026 - Jun 2026 · Tunisys, Tunis</span>
+							</div>
+							<ul>
+								<li>
+									Built an intelligent platform for automated technical writing
+									using RAG with Apache Tika ingestion and pgvector semantic
+									search with HNSW indexing.
+								</li>
+								<li>
+									Integrated LLM generation via the Groq API with a Spring Boot
+									+ LangChain4j backend.
+								</li>
+								<li>
+									Delivered an Angular frontend with real-time collaboration,
+									section locking, and versioning with granular diff tracking.
+								</li>
+							</ul>
+						</div>
+						<div class="timeline-item reveal">
+							<div class="timeline-header">
+								<h4>Web Development Intern</h4>
+								<span>Jan 2025 - Mar 2025 · ISET Rades</span>
+							</div>
+							<ul>
+								<li>
+									Developed an IoT equipment borrowing platform with an Angular
+									+ PHP admin dashboard for inventory and borrowing record
+									management.
+								</li>
+							</ul>
+						</div>
+						<div class="timeline-item reveal">
+							<div class="timeline-header">
+								<h4>IT Technician Intern</h4>
+								<span>Early 2024 · SIMOP Tunisie</span>
+							</div>
+							<ul>
+								<li>
+									Provided hardware and software support while collaborating on
+									maintenance and troubleshooting tasks.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="projects">
+				<div class="container">
+					<h3 class="section-title reveal">Featured Project</h3>
+					<p class="section-subtitle reveal">
+						A deep dive into my largest build so far: an AI-powered technical
+						writing platform.
+					</p>
+					<div class="featured-grid">
+						<div class="featured-details reveal">
+							<h3>Technical Writing RAG Platform (2026)</h3>
+							<p>
+								Built an intelligent platform for automated technical writing using
+								RAG with Apache Tika ingestion, pgvector semantic search with HNSW
+								indexing, and LLM generation via the Groq API. The backend runs on
+								Spring Boot with LangChain4j, while the Angular frontend delivers
+								real-time collaboration (WebSockets/STOMP), section locking, and
+								granular versioning with diff tracking.
+							</p>
+							<div class="badge-row">
+								<span class="badge">Spring Boot</span>
+								<span class="badge">LangChain4j</span>
+								<span class="badge">Angular</span>
+								<span class="badge">WebSockets (STOMP)</span>
+								<span class="badge">PostgreSQL (pgvector)</span>
+								<span class="badge">Apache Tika</span>
+								<span class="badge">Groq API</span>
+							</div>
+						</div>
+						<div class="featured-gallery reveal">
+							<figure class="featured-image">
+								<img
+									src="images/projects/tunisys-rag-1.jpg"
+									alt="RAG platform screenshot 1"
+								/>
+							</figure>
+							<figure class="featured-image">
+								<img
+									src="images/projects/tunisys-rag-2.jpg"
+									alt="RAG platform screenshot 2"
+								/>
+							</figure>
+						</div>
+					</div>
+
+					<h3 class="section-title reveal">Projects</h3>
+					<p class="section-subtitle reveal">
+						Selected work across mobile, web, and desktop applications.
+					</p>
+					<div class="projects-grid">
+						<article class="project-card reveal">
+							<div class="media project-media" data-src="images/projects/safra.jpg">
+								<span>images/projects/safra.jpg</span>
+							</div>
+							<h4>Safra (2026)</h4>
+							<p>
+								Smart carpooling app with geolocation-based ride matching and
+								REST APIs.
+							</p>
+							<div class="badge-row">
+								<span class="badge">Spring Boot</span>
+								<span class="badge">Angular</span>
+								<span class="badge">Kotlin</span>
+								<span class="badge">Python</span>
+							</div>
+						</article>
+						<article class="project-card reveal">
+							<div
+								class="media project-media"
+								data-src="images/projects/7oumty.jpg"
+							>
+								<span>images/projects/7oumty.jpg</span>
+							</div>
+							<h4>7oumty (2025)</h4>
+							<p>
+								Hyperlocal neighbourhood social network with a Laravel API
+								backend and React SPA.
+							</p>
+							<div class="badge-row">
+								<span class="badge">Laravel</span>
+								<span class="badge">React</span>
+								<span class="badge">MySQL</span>
+							</div>
+						</article>
+						<article class="project-card reveal">
+							<div
+								class="media project-media"
+								data-src="images/projects/tayarti.jpg"
+							>
+								<span>images/projects/tayarti.jpg</span>
+							</div>
+							<h4>Tayarti (2025)</h4>
+							<p>
+								Desktop flight operations management system with JavaFX and
+								MySQL.
+							</p>
+							<div class="badge-row">
+								<span class="badge">JavaFX</span>
+								<span class="badge">MySQL</span>
+							</div>
+						</article>
+						<article class="project-card reveal">
+							<div
+								class="media project-media"
+								data-src="images/projects/books.jpg"
+							>
+								<span>images/projects/books.jpg</span>
+							</div>
+							<h4>E-commerce Books (2025)</h4>
+							<p>
+								Online bookstore with product management and authentication.
+							</p>
+							<div class="badge-row">
+								<span class="badge">Symfony</span>
+								<span class="badge">MySQL</span>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="certifications">
+				<div class="container">
+					<h3 class="section-title reveal">Certifications</h3>
+					<div class="cert-card reveal">
+						<strong>Python Essentials 2</strong>
+						<p>Cisco Networking Academy, 2024</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section" id="contact">
+				<div class="container">
+					<h3 class="section-title reveal">Contact</h3>
+					<p class="section-subtitle reveal">
+						Open to collaboration and new opportunities.
+					</p>
+					<div class="contact-grid">
+						<a class="contact-card reveal" href="mailto:aminmedfai30@gmail.com">
+							<span>Email</span>
+							aminmedfai30@gmail.com
+						</a>
+						<a
+							class="contact-card reveal"
+							href="https://github.com/4MINEpy"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<span>GitHub</span>
+							github.com/4MINEpy
+						</a>
+						<a
+							class="contact-card reveal"
+							href="https://linkedin.com/in/aminmedfai"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<span>LinkedIn</span>
+							linkedin.com/in/aminmedfai
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			const revealElements = document.querySelectorAll(".reveal");
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("in-view");
+							observer.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.2 }
+			);
+
+			revealElements.forEach((element) => observer.observe(element));
+
+			const mediaBlocks = document.querySelectorAll(".media[data-src]");
+			mediaBlocks.forEach((block) => {
+				const source = block.getAttribute("data-src");
+				block.style.setProperty("--bg-image", `url('${source}')`);
+				const testImage = new Image();
+				testImage.onload = () => block.classList.add("has-image");
+				testImage.src = source;
+			});
+		</script>
+	</body>
+</html>
